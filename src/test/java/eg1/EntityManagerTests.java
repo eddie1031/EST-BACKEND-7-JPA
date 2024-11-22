@@ -100,12 +100,61 @@ public class EntityManagerTests {
         });
 
         executeCommit(em, () -> {
-            log.info("변경 감지");
+            log.info("변경 감지1");
             Member findMember = em.find(Member.class, member.getId());
             assertThat(findMember.getName()).isEqualTo(member.getName());
 
             findMember.setName("ADMIN");
+            log.info("================================");
         });
+
+        executeCommit(em, () -> {
+            log.info("변경 감지2");
+
+            Member findMember = em.find(Member.class, member.getId());
+            assertThat(findMember.getName()).isEqualTo("ADMIN");
+
+            em.detach(findMember);
+
+            findMember.setName("MEMBER");
+
+            log.info("================================");
+        });
+
+        executeCommit(em, () -> {
+            Member findMember = em.find(Member.class, member.getId());
+
+            assertThat(findMember.getName()).isEqualTo("ADMIN");
+        });
+
+        executeCommit(em, () -> {
+            Member findMember = em.find(Member.class, member.getId());
+            em.remove(findMember);
+        });
+
+        executeCommit(em, () -> {
+            Member findMember = em.find(Member.class, member.getId());
+            assertThat(findMember).isNull();
+        });
+
+    }
+
+    @Test
+    @DisplayName("Write-behind test")
+    void write_behind_test() throws Exception {
+
+        executeCommit(em, () -> {
+
+            Member member1 = genMember(getMemberName());
+            Member member2 = genMember(getMemberName());
+
+            em.persist(member1);
+            em.persist(member2);
+
+            log.info("아직 쿼리가 실행되지 않았습니다!");
+
+        });
+
 
     }
 
