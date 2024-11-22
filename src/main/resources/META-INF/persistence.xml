@@ -9,11 +9,44 @@
 
         <class>domain.eg1.Member</class>
 
+        <class>domain.eg2._1.Post</class>
+        <class>domain.eg2._2.Product</class>
+
+        <class>domain.eg2._3.OtherAccount</class>
+        <class>domain.eg2._3.GymMembership</class>
+
+        <class>domain.eg3._1.Team</class>
+        <class>domain.eg3._1.Player</class>
+
+        <class>domain.eg3._3.Lecture</class>
+        <class>domain.eg3._3.Student</class>
+
+
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver" />
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/est-hibernate-test"/>
-            <property name="jakarta.persistence.jdbc.user" value="happy"/>
-            <property name="jakarta.persistence.jdbc.password" value="day"/>
+            <property name="jakarta.persistence.jdbc.user" value=""/>
+            <property name="jakarta.persistence.jdbc.password" value=""/>
+
+            <property name="hibernate.id.new_generator_mappings" value="true"/>
+
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+
+<!--            <property name="hibernate.hbm2ddl.auto" value="create"/>-->
+
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="est-hibernate-exp2">
+
+        <class>domain.eg2._3.Account</class>
+
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:./exp"/>
+            <property name="jakarta.persistence.jdbc.user" value="sa"/>
+            <property name="jakarta.persistence.jdbc.password" value=""/>
 
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
@@ -21,14 +54,6 @@
 
             <property name="hibernate.hbm2ddl.auto" value="create"/>
 
-        </properties>
-    </persistence-unit>
-    <persistence-unit name="est-hibernate-exp2">
-        <properties>
-            <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:./exp"/>
-            <property name="jakarta.persistence.jdbc.user" value="sa"/>
-            <property name="jakarta.persistence.jdbc.password" value=""/>
         </properties>
     </persistence-unit>
 </persistence>
