@@ -28,5 +28,3 @@ values ( '누리',  3 );
 
 insert into `players` ( name, team_id )
 values ( '아라',  3 );
-
-
