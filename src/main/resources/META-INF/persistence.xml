@@ -25,8 +25,8 @@
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver" />
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/est-hibernate-test"/>
-            <property name="jakarta.persistence.jdbc.user" value=""/>
-            <property name="jakarta.persistence.jdbc.password" value=""/>
+            <property name="jakarta.persistence.jdbc.user" value="happy"/>
+            <property name="jakarta.persistence.jdbc.password" value="day"/>
 
             <property name="hibernate.id.new_generator_mappings" value="true"/>
 
@@ -41,6 +41,9 @@
     <persistence-unit name="est-hibernate-exp2">
 
         <class>domain.eg2._3.Account</class>
+
+        <class>domain.eg5.Coffee</class>
+        <class>domain.eg5.CoffeeDto</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />
